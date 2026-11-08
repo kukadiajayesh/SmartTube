@@ -440,6 +440,8 @@ public class PlayerUIController extends BasePlayerController {
         }
 
         if (!dislike) {
+            // Like and dislike are exclusive (YouTube keeps only the last one)
+            getPlayer().setButtonState(R.id.action_thumbs_up, PlayerUI.BUTTON_OFF);
             callMediaItemObservable(mMediaItemService::setDislikeObserve);
         } else {
             callMediaItemObservable(mMediaItemService::removeDislikeObserve);
@@ -467,6 +469,8 @@ public class PlayerUIController extends BasePlayerController {
         }
 
         if (!like) {
+            // Like and dislike are exclusive (YouTube keeps only the last one)
+            getPlayer().setButtonState(R.id.action_thumbs_down, PlayerUI.BUTTON_OFF);
             callMediaItemObservable(mMediaItemService::setLikeObserve);
         } else {
             callMediaItemObservable(mMediaItemService::removeLikeObserve);
